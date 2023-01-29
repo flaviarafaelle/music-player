@@ -57,6 +57,20 @@ body {
     margin-top: -10em;
 }
 
+.album-cover-animation {
+    animation: rotation 4s infinite linear
+}
+
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
 .btn {
     display: flex;
     justify-content: space-between;
