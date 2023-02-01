@@ -1,95 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-section {
-    width: 95em;
-    height: 45em;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-h1,h4 {
-    font-weight: 400;
-}
-
-h2 {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-h3 {
-    font-weight: lighter;
-    font-size: 15px;
-    margin-top: -1em;
+* {
+    box-sizing: border-box;
 }
 
 body {
+    height: 100vh;
+    margin: 0;
     font-family: 'Montserrat', sans-serif;
-    color: var(--dark-brown);
     background-color: var(--light-brown);
-}
-
-.title {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.player-field {
-    display: flex;
     justify-content: center;
 }
 
-.background {
-    background-color: var(--white);
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    width: 20em;
-    border-radius: 10px;
-    box-shadow: 5px 5px var(--dark-brown);
-    justify-content: space-evenly;
-}
-
-.album-cover {
-    width: 7em;
-    margin-top: -10em;
-}
-
-.album-cover-animation {
-    animation: rotation 4s infinite linear
-}
-
-
-@keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(359deg);
-    }
-  }
-
-.btn {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 2em;
-}
-
-button {
+.music-container {
     background-color: white;
-    border-color: white;
-    border-style: none;
-    color: var(--dark-brown);
+    border-radius: 15px;
+    box-shadow: 5px 5px var(--dark-brown);
+    display: flex;
+    padding: 20px 30px;
+    position: relative;
+    margin: 100px 0;
+    z-index: 10;
 }
 
-a { 
-    color: currentColor;
- } 
+.img-container {
+    position: relative;
+    width: 110px;
+}
 
-.credits {
+.img-container img {
+    width: inherit;
+    height: 110px;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    animation: rotate 3s linear infinite;
+
+    animation-play-state: paused;
+}
+
+.music-container.play .img-container img {
+    animation-play-state: running;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.navigation {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.action-btn {
+    background-color: white;
+    border: 0;
+    color: var(--dark-brown);
+    font-size: 20px;
+    cursor: pointer;
+    pad: 10px;
+    margin: 0 20px;
+}
+
+.action-btn-big {
+    color: var(--dark-brown);
+    font-size: 30px;
+}
+
+.action-btn:focus {
+    outline: 0;
+}
+.music-info {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px 15px 0 0;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: calc(100% - 40px);
+    /* opacity: 0; */
+    transform: translateY(0%);
 }
