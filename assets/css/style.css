@@ -45,7 +45,7 @@ body {
 }
 
 .music-container.play .img-container img {
-    animation-play-state: running;
+    /* animation-play-state: running; */
 }
 
 @keyframes rotate {
@@ -90,6 +90,34 @@ body {
     top: 0;
     left: 20px;
     width: calc(100% - 40px);
-    /* opacity: 0; */
+    padding: 10px 10px 10px 150px;
+    opacity: 0;
     transform: translateY(0%);
+    transition: transform 0,3s ease-in opacity 0,3s ease-in;
+}
+
+.music-info h4 {
+    margin: 0;
+}
+
+.music-container.play .music-info {
+    opacity: 1;
+    transform: translateY(-100%);
+}
+
+.progress-container {
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 4px;
+    width: 100%;
+}
+
+.progress {
+    background-color: var(--dark-brown);
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+    transition: width 0,1s linear;
 }
