@@ -23,7 +23,7 @@ body {
     padding: 20px 30px;
     position: relative;
     margin: 100px 0;
-    z-index: 10;
+    z-index: 10; /* define a ordem z de um elemento posicionado e seus descendentes ou itens flexíveis */
 }
 
 .img-container {
@@ -34,7 +34,7 @@ body {
 .img-container img {
     width: inherit;
     height: 110px;
-    object-fit: cover;
+    object-fit: cover; /* objeto redimensionado para caber em seu contêiner */
     position: absolute;
     bottom: 0;
     left: 0;
