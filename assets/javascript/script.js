@@ -1,18 +1,23 @@
-const musicContainer = document.getElementById('music-container');
-const playBtn = document.getElementById('play');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
+const musicContainer = document.getElementById("music-container");
+const playBtn = document.getElementById("play");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
 
-const audio = document.getElementById('audio');
-const progress = document.getElementById('progress');
-const progressContainer = document.getElementById('progress-container');
-const title = document.getElementById('title');
-const cover = document.getElementById('cover');
-const currTime = document.querySelector('#currTime');
-const durTime = document.querySelector('#durTime');
+const audio = document.getElementById("audio");
+const progress = document.getElementById("progress");
+const progressContainer = document.getElementById("progress-container");
+const title = document.getElementById("title");
+const cover = document.getElementById("cover");
+const currTime = document.querySelector("#currTime");
+const durTime = document.querySelector("#durTime");
 
 // Song titles
-const songs = ['Soldier, Poet, King', 'Bloom', 'Je te laisserai des mots', 'Ophelia'];
+const songs = [
+  "Soldier, Poet, King",
+  "Bloom",
+  "Je te laisserai des mots",
+  "Ophelia",
+];
 
 // Keep track of song
 let songIndex = 0;
@@ -29,18 +34,18 @@ function loadSong(song) {
 
 // Play song
 function playSong() {
-  musicContainer.classList.add('play');
-  playBtn.querySelector('i.fas').classList.remove('fa-play');
-  playBtn.querySelector('i.fas').classList.add('fa-pause');
+  musicContainer.classList.add("play");
+  playBtn.querySelector("i.fas").classList.remove("fa-play");
+  playBtn.querySelector("i.fas").classList.add("fa-pause");
 
   audio.play();
 }
 
 // Pause song
 function pauseSong() {
-  musicContainer.classList.remove('play');
-  playBtn.querySelector('i.fas').classList.add('fa-play');
-  playBtn.querySelector('i.fas').classList.remove('fa-pause');
+  musicContainer.classList.remove("play");
+  playBtn.querySelector("i.fas").classList.add("fa-play");
+  playBtn.querySelector("i.fas").classList.remove("fa-pause");
 
   audio.pause();
 }
@@ -71,9 +76,16 @@ function nextSong() {
   playSong();
 }
 
+// Update progress bar
+function updateProgress(e) {
+  const { duration, currentTime } = e.srcElement;
+  const progressPercent = (currentTime / duration) * 100;
+  progress.style.width = `${progressPercent}%`;
+}
+
 // Event listeners
-playBtn.addEventListener('click', () => {
-  const isPlaying = musicContainer.classList.contains('play');
+playBtn.addEventListener("click", () => {
+  const isPlaying = musicContainer.classList.contains("play");
 
   if (isPlaying) {
     pauseSong();
@@ -83,5 +95,8 @@ playBtn.addEventListener('click', () => {
 });
 
 // Change song
-prevBtn.addEventListener('click', prevSong);
-nextBtn.addEventListener('click', nextSong);
+prevBtn.addEventListener("click", prevSong);
+nextBtn.addEventListener("click", nextSong);
+
+// Time/song update
+audio.addEventListener('timeupdate', updateProgress);
